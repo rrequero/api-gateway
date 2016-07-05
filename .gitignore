@@ -1,0 +1,7 @@
+/node_modules
+.DS_STORE
+.vscode/
+npm-debug.log
+config/auth.json
+prod.env
+newrelic_agent.log

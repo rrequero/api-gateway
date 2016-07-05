@@ -1,0 +1,22 @@
+{
+    "mongodb": {
+        "database": "api_gateway_db",
+        "host": "127.0.0.1",
+        "port": 27017
+    },
+    "logger": {
+        "name": "API-Gateway-DEV",
+        "level": "debug",
+        "toFile": false,
+        "dirLogFile": null
+    },
+    "server": {
+        "port": 8000,
+        "publicUrl": "http://api.gateway.dev:8000",
+        "internalUrl": "http://192.168.99.100:8000",
+        "cookie": {
+            "domain": "test.dev"
+        },
+        "sessionKey": "api-gateway-key"
+    }
+}
