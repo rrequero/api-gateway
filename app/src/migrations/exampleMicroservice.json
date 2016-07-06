@@ -2,6 +2,7 @@
     "name": "Usuarios",
     "active": true,
     "url": "http://localhost:8080",
+    "pathInfo": "/info.json"
 
     "endpoints:[{
         "path":"/users",

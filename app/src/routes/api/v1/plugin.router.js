@@ -1,5 +1,5 @@
 const Router = require('koa-router');
-const Plugin = require('models/plugin');
+const Plugin = require('models/plugin.model');
 const logger = require('logger');
 
 const router = new Router({

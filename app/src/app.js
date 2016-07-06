@@ -5,7 +5,7 @@ const config = require('config');
 const mongoose = require('mongoose');
 const loader = require('loader');
 const path = require('path');
-const convert = require('koa-convert')
+const convert = require('koa-convert');
 const bluebird = require('bluebird');
 const mongoUri = `mongodb://${config.get('mongodb.host')}:${config.get('mongodb.port')}/${config.get('mongodb.database')}`;
 
@@ -36,10 +36,10 @@ async function onDbReady(err) {
     app.use(convert(koaBody));
     await loader.loadPlugins(app);
 
-
     app.use(koaLogger());
 
     loader.loadRoutes(app);
+    app.use(require('routes/dispatcher.js').middleware()); // eslint-disable-line global-require
 
     app.listen(process.env.PORT);
     logger.info('Server started in ', process.env.PORT);

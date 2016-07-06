@@ -1,4 +1,6 @@
-const Plugin = require('models/plugin');
+const Plugin = require('models/plugin.model');
+const Microservice = require('models/microservice.model');
+const Endpoint = require('models/endpoint.model');
 const logger = require('logger');
 
 module.exports = async function init() {
@@ -23,5 +25,6 @@ module.exports = async function init() {
         mainFile: 'plugins/timeRequest',
         active: true,
     }).save();
-
+    await Microservice.remove({});
+    await Endpoint.remove({});
 };

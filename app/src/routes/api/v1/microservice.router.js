@@ -1,7 +1,7 @@
 const Router = require('koa-router');
-const MicroserviceModel = require('models/microservice');
+const MicroserviceModel = require('models/microservice.model');
 const logger = require('logger');
-const MicroserviceService = require('services/microservice');
+const MicroserviceService = require('services/microservice.service');
 const MicroserviceDuplicated = require('errors/microserviceDuplicated');
 const MicroserviceNotExist = require('errors/microserviceNotExist');
 
@@ -31,9 +31,9 @@ class MicroserviceRouter {
     }
 
     static async delete(ctx) {
-        logger.info(`Removing microservice with slug ${ctx.params.slug}`);
+        logger.info(`Removing microservice with id ${ctx.params.id}`);
         try {
-            const result = await MicroserviceService.remove(ctx.params.slug);
+            const result = await MicroserviceService.remove(ctx.params.id);
             ctx.body = result;
         } catch (err) {
             if (err instanceof MicroserviceNotExist) {
@@ -48,6 +48,6 @@ class MicroserviceRouter {
 
 router.get('/', MicroserviceRouter.get);
 router.post('/', MicroserviceRouter.register);
-router.delete('/:slug', MicroserviceRouter.delete);
+router.delete('/:id', MicroserviceRouter.delete);
 
 module.exports = router;

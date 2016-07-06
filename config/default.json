@@ -11,9 +11,9 @@
         "dirLogFile": null
     },
     "server": {
-        "port": 8000,
-        "publicUrl": "http://api.gateway.dev:8000",
-        "internalUrl": "http://192.168.99.100:8000",
+        "port": 9000,
+        "publicUrl": "http://api.gateway.dev:9000",
+        "internalUrl": "http://192.168.99.100:9000",
         "cookie": {
             "domain": "test.dev"
         },

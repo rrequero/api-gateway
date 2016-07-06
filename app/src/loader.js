@@ -1,5 +1,5 @@
 const logger = require('logger');
-const Plugin = require('models/plugin');
+const Plugin = require('models/plugin.model');
 const fs = require('fs');
 const routersPath = `${__dirname}/routes`;
 const mount = require('koa-mount');
@@ -23,18 +23,18 @@ function loadAPI(app, path, pathApi) {
         const stat = fs.statSync(newPath);
 
         if (!stat.isDirectory()) {
-
-            if (file === 'index.js') {
-                existIndexRouter = true;
-            } else {
-                logger.debug('Loading route %s, in path %s', newPath, pathApi);
-                if (pathApi) {
-                    app.use(mount(pathApi, require(newPath).routes())); // eslint-disable-line global-require,max-len
+            if (file.lastIndexOf('.router.js') !== -1) {
+                if (file === 'index.router.js') {
+                    existIndexRouter = true;
                 } else {
-                    app.use(require(newPath).middleware()); // eslint-disable-line global-require,max-len
+                    logger.debug('Loading route %s, in path %s', newPath, pathApi);
+                    if (pathApi) {
+                        app.use(mount(pathApi, require(newPath).routes())); // eslint-disable-line global-require,max-len
+                    } else {
+                        app.use(require(newPath).middleware()); // eslint-disable-line global-require,max-len
+                    }
                 }
             }
-
         } else {
             // is folder
             const newPathAPI = pathApi ? `${pathApi}/${file}` : `/${file}`;
@@ -43,7 +43,7 @@ function loadAPI(app, path, pathApi) {
     });
     if (existIndexRouter) {
         // load indexRouter when finish other Router
-        const newPath = path ? `${path}/index.js` : 'index.js';
+        const newPath = path ? `${path}/index.router.js` : 'index.router.js';
         logger.debug('Loading route %s, in path %s', newPath, pathApi);
         if (pathApi) {
             app.use(mount(pathApi, require(newPath).middleware())); // eslint-disable-line global-require,max-len
