@@ -11,7 +11,7 @@ async function loadPlugins(app) {
     });
     plugins.forEach((plugin) => {
         logger.info(`Loading ${plugin.name} plugin`);
-        require(plugin.mainFile).middleware(app); // eslint-disable-line global-require
+        require(plugin.mainFile).middleware(app, plugin); // eslint-disable-line global-require
     });
 }
 

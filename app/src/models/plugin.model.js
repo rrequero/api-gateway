@@ -6,7 +6,7 @@ const Plugin = new Schema({
     description: { type: String, required: true, trim: true },
     mainFile: { type: String, required: true, trim: true },
     active: { type: Boolean, default: false },
-    params: { type: Schema.Types.Mixed, required: false },
+    config: { type: Schema.Types.Mixed, required: false },
 });
 
 

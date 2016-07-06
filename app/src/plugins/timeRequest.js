@@ -18,7 +18,7 @@ function middleware(app) {
             await next();
             logger.info('Time request ==> ', parseTime(Date.now() - first));
         } catch (err) {
-            logger.info('Time request2 ==> ', parseTime(Date.now() - first));
+            logger.info('Time request ==> ', parseTime(Date.now() - first));
             throw err;
         }
     });

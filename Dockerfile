@@ -5,7 +5,7 @@ ENV NAME api-gateway
 ENV USER gateway
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache --update bash git openssh python
+    apk add --no-cache --update bash git openssh python alpine-sdk
 
 RUN addgroup $USER && adduser -s /bin/bash -D -G $USER $USER
 

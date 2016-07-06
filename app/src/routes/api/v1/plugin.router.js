@@ -10,6 +10,7 @@ class PluginRouter {
 
     static async get(ctx) {
         logger.info('Obtaining plugins');
+        ctx.session.plugin = true;
         ctx.body = await Plugin.find({}, { __v: 0 });
     }
 
