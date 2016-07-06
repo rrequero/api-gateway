@@ -6,7 +6,7 @@ const Endpoint = new Schema({
     path: { type: String, required: true, trim: true },
     method: { type: String, required: true, trim: true },
     pathRegex: { type: RegExp, required: true },
-    keys: [{ type: String, trim: true }],
+    pathKeys: [{ type: String, trim: true }],
     authenticated: { type: Boolean, default: false },
     redirect: [{
         path: { type: String, required: true, trim: true },

@@ -8,7 +8,7 @@ parserOptions:
   sourceType: module
   ecmaVersion: 6
 rules:
-  max-len: [1, 99, 2, {"ignoreUrls":true}]
+  max-len: [1, 120, 2, {"ignoreUrls":true}]
   curly: [2, "multi-line"]
   comma-dangle: [2, always-multiline]
   eqeqeq: [2, "allow-null"]

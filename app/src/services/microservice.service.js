@@ -46,9 +46,12 @@ class Microservice {
 
         } else {
             logger.debug('Not exist path. Registering new');
-            const pathKeys = [];
+            let pathKeys = [];
             const pathRegex = pathToRegexp(endpoint.path, pathKeys);
-            logger.debug('Saving new endpoint');
+            if (pathKeys && pathKeys.length > 0) {
+                pathKeys = pathKeys.map((key) => key.name);
+            }
+            logger.debug('Saving new endpoint', pathKeys);
             await new EndpointModel({
                 path: endpoint.path,
                 method: endpoint.method,
